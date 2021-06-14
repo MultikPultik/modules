@@ -1,4 +1,6 @@
-import { DateTime } from "./luxon.js"; // 1
+import { DateTime } from "luxon"; // 1
+import { playSound } from "./sound.js";
+
 export const timerForm = document.getElementById('timer');
 
 const hour = document.getElementById('hour');
@@ -21,7 +23,7 @@ timerForm.addEventListener("input", (ev) => {
   if (ev.target.name === "hour" || ev.target.name === "min" || ev.target.name === "sec") {
     tmr.innerText = DateTime.fromObject(getTimeFromHTML()).toFormat('HH:mm:ss');
   }
-  
+
   console.log(
     DateTime.fromObject(getTimeFromHTML())
       .toFormat('hh:mm:ss')
@@ -35,7 +37,7 @@ function getTimeFromHTML() {
     minutes: input_min.value,
     seconds: input_sec.value,
     zone: 'local',
-  }
+  };
 }
 
 function timer() {
@@ -50,17 +52,20 @@ function timer() {
     } else {
       console.log(end.diff(DateTime.local()).toFormat('hh:mm:ss'));
       tmr.innerText = end.diff(DateTime.local()).toFormat('hh:mm:ss');
+      if (end.diff(DateTime.local()).toFormat('ss') <= 5) {
+        playSound();
+      }
     }
-  }, 100);
+  }, 1000);
 }
 
 startbtn[0].addEventListener('click', ev => {
   ev.preventDefault();
   timer();
-})
+});
 
 stopbtn[0].addEventListener('click', ev => {
   ev.preventDefault();
   clearInterval(interval);
-})
+});
 
