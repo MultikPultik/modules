@@ -1,4 +1,4 @@
-import './howler.js';
+import {Howl} from 'howler';
 
 
 
@@ -10,10 +10,4 @@ const sound = new Howl({
 export function playSound() {
   sound.play();
 }
-// var vol = 1.0;
 
-// document.getElementById('start').addEventListener('click', (ev) => {
-//   sound.play();
-// });
-
-  // sound.rate(vol > .5 ? vol -= 0.5 : vol = .5);

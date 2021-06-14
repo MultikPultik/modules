@@ -1,4 +1,4 @@
-import { DateTime } from "./luxon.js"; // 1
+import { DateTime } from "luxon"; // 1
 import { playSound } from "./sound.js";
 
 export const timerForm = document.getElementById('timer');
@@ -37,7 +37,7 @@ function getTimeFromHTML() {
     minutes: input_min.value,
     seconds: input_sec.value,
     zone: 'local',
-  }
+  };
 }
 
 function timer() {
@@ -62,10 +62,10 @@ function timer() {
 startbtn[0].addEventListener('click', ev => {
   ev.preventDefault();
   timer();
-})
+});
 
 stopbtn[0].addEventListener('click', ev => {
   ev.preventDefault();
   clearInterval(interval);
-})
+});
 

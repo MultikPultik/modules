@@ -1,17 +1,17 @@
+import '../style/main.css';
 import { diffDates, diffToHtml } from "./datecalc.js";
 import { formatError } from "./utils.js";
 import { switchSection } from "./section.js";
 import { timerForm } from "./timer.js";
-
 
 const dateCalcForm = document.getElementById("datecalc");
 const dateCalcResult = document.getElementById("datecalc__result");
 const chooseElement = document.getElementById("nav");
 
 chooseElement.addEventListener('click', (ev) => {
-
   switchSection(ev.target.id);
 });
+
 dateCalcForm.addEventListener("submit", handleCalcDates);
 
 function handleCalcDates(event) {
